@@ -24,7 +24,7 @@
                 <ul class="nav ">
                     <li><a href="">HOME</a></li>
                     <li><a href="">MySQL Database</a></li>
-                    <li><a href="">QUERIES</a></li>
+                    <li><a href="">Querying</a></li>
                 </ul>
             </div>
         </div>
@@ -203,7 +203,7 @@
 
 
     <div class="container-fluid bg-2 text-center">
-        <h3 class="margin">Queries</h3>
+        <h3 class="margin">Querying</h3>
         <div class="row">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
             <a href="#">
