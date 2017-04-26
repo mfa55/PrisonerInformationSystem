@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
                 <ul class="nav">
-                    <li><a href="#projectDescription">Project Description</a></li>
+                    <li><a href="#projectDescription">Project</a></li>
                     <li><a href="#mysqlDB">MySQL Database</a></li>
                     <li><a href="#querying">Querying</a></li>
                 </ul>
@@ -31,7 +31,11 @@
     </div>
 
     <div class="container bg-3 text-center">
-        <h3 class="margin" id="mysqlDB">MySQL Database</h3><br/>
+        <h3 class="margin" id="projectDescription">Project</h3>
+        <p>This project serves as a Prisoner Information System, it allows the execution of any query on our database.</p>
+        <br/>
+        <h3 class="margin" id="mysqlDB">MySQL Database</h3>
+        <br/>
         <div class="row">
             <div class="col-md-4">
                 <p>Prisoner</p>
