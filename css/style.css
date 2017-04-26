@@ -48,3 +48,17 @@ p {font-size: 16px;}
 .navbar-nav  li a:hover {
     color: #1abc9c !important;
 }
+.queryArea{
+    border: none;
+    border-radius: 0;
+    resize: none;
+}
+
+.run-button{
+    background-color: #1abc9c;
+    border-radius: 0;
+}
+
+#queryResultModal{
+    color: #474e5d;
+}
