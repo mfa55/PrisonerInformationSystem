@@ -32,7 +32,7 @@
 
     <div class="container bg-3 text-center">
         <h3 class="margin" id="projectDescription">Project</h3>
-        <p>This project serves as a Prisoner Information System, it allows the execution of any query on our database.</p>
+        <p>This project serves as a Prisoner Information System, it allows the execution of any query on our database which holds all the information about each criminal, his cellmate, the location of their cell, the staff and the external visitors.</p>
         <br/>
         <h3 class="margin" id="mysqlDB">MySQL Database</h3>
         <br/>
@@ -51,27 +51,24 @@
                             </div>
                             <div class="modal-body">
                                 <pre><code class="sql">
-CREATE TABLE `prisoner` (
-  `SSN` bigint(20) NOT NULL AUTO_INCREMENT,
-  `address` varchar(255) DEFAULT NULL,
-  `birthDate` date DEFAULT NULL,
-  `entryDate` date DEFAULT NULL,
-  `firstName` varchar(255) DEFAULT NULL,
-  `gender` int(11) DEFAULT NULL,
-  `lastName` varchar(255) DEFAULT NULL,
-  `phoneCallsAllowed` int(11) NOT NULL,
-  `phoneNumber` bigint(20) NOT NULL,
-  `prisonSentence` int(11) NOT NULL,
-  `releaseDate` date DEFAULT NULL,
-  `visitsAllowed` int(11) NOT NULL,
-  `cellmateId` bigint(20) DEFAULT NULL,
-  `locationId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`SSN`),
-  KEY `FKc2up4amrqvaeh2b0u8ku4eenr` (`cellmateId`),
-  KEY `FK6qbpj3f390v3s7oxlqbnqegyw` (`locationId`),
-  CONSTRAINT `FK6qbpj3f390v3s7oxlqbnqegyw` FOREIGN KEY (`locationId`) REFERENCES `location` (`Id`),
-  CONSTRAINT `FKc2up4amrqvaeh2b0u8ku4eenr` FOREIGN KEY (`cellmateId`) REFERENCES `prisoner` (`SSN`)
-) ENGINE=InnoDB AUTO_INCREMENT=431434134135 DEFAULT CHARSET=latin1
+create table PRISONER
+(
+   FIRSTNAME            varchar(20) not null,
+   LASTNAME             varchar(20) not null,
+   SSN                  int not null,
+   LOCATIONID           int not null,
+   CELLMATEID           int,
+   PRISONSENTENCE       int not null,
+   ENTRYDATE            datetime not null,
+   ADDRESS              varchar(100),
+   CELLNUMBER           int not null,
+   PHONENUMBER          int,
+   PHONECALLSALLOWED    int not null,
+   VISITSALLOWED        int not null,
+   RELEASEDATE          datetime not null,
+   BIRTHDATE            datetime not null,
+   primary key (SSN)
+);
                                     </code></pre>
                             </div>
                             <div class="modal-footer">
@@ -95,7 +92,14 @@ CREATE TABLE `prisoner` (
                                 <h4 class="modal-title">Table Schema</h4>
                             </div>
                             <div class="modal-body">
-                                <pre><code class="sql">CREATE TABLE HALLAK();</code></pre>
+                                <pre><code class="sql">
+create table LOCATION
+(
+   LOCATIONID           int not null,
+   NAME                 varchar(50) not null,
+   primary key (LOCATIONID)
+);
+                                    </code></pre>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -118,7 +122,20 @@ CREATE TABLE `prisoner` (
                                 <h4 class="modal-title">Table Schema</h4>
                             </div>
                             <div class="modal-body">
-                                <pre><code class="sql">CREATE TABLE HALLAK();</code></pre>
+                                <pre><code class="sql">
+create table STAFF
+(
+   FIRSTNAME            varchar(20) not null,
+   LASTNAME             varchar(20) not null,
+   SSN                  int not null,
+   MANAGERID            int,
+   LOCATIONID           int,
+   ADDRESS              varchar(100),
+   GENDER               varchar(10) not null,
+   BIRTHDATE            datetime not null,
+   primary key (SSN)
+);
+                                    </code></pre>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -143,7 +160,18 @@ CREATE TABLE `prisoner` (
                                 <h4 class="modal-title">Table Schema</h4>
                             </div>
                             <div class="modal-body">
-                                <pre><code class="sql">CREATE TABLE HALLAK();</code></pre>
+                                <pre><code class="sql">
+create table CRIME
+(
+   CRIMEID              int not null,
+   SSN                  int,
+   CRIMETYPE            varchar(20) not null,
+   LEVEL                int not null,
+   VICTIMID             int not null,
+   CRIMEDATE            timestamp not null,
+   primary key (CRIMEID)
+);
+                                    </code></pre>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -166,7 +194,16 @@ CREATE TABLE `prisoner` (
                                 <h4 class="modal-title">Table Schema</h4>
                             </div>
                             <div class="modal-body">
-                                <pre><code class="sql">CREATE TABLE HALLAK();</code></pre>
+                                <pre><code class="sql">
+create table VICTIM
+(
+   FIRSTNAME            varchar(20) not null,
+   LASTNAME             varchar(20) not null,
+   VICTIMID             int not null,
+   BIRTHDATE            timestamp,
+   primary key (VICTIMID)
+);
+                                    </code></pre>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -189,7 +226,17 @@ CREATE TABLE `prisoner` (
                                 <h4 class="modal-title">Table Schema</h4>
                             </div>
                             <div class="modal-body">
-                                <pre><code class="sql">CREATE TABLE HALLAK();</code></pre>
+                                <pre><code class="sql">
+create table VISITOR
+(
+   FIRSTNAME            varchar(20) not null,
+   LASTNAME             varchar(20) not null,
+   GENDER               varchar(10) not null,
+   VISITORID            int not null,
+   BIRTHDATE            datetime not null,
+   primary key (VISITORID)
+);
+                                    </code></pre>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -215,7 +262,16 @@ CREATE TABLE `prisoner` (
                                 <h4 class="modal-title">Table Schema</h4>
                             </div>
                             <div class="modal-body">
-                                <pre><code class="sql">CREATE TABLE HALLAK();</code></pre>
+                                <pre><code class="sql">
+create table VISIT
+(
+   VISITORID            int not null,
+   PRISONERSSN          int not null,
+   VISITDATE            datetime not null,
+   VISITID              int not null,
+   primary key (VISITID)
+);
+                                    </code></pre>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
